@@ -72,6 +72,8 @@ def list_tasks(body, params):
 
 
 def create_task(body, params):
+    global next_id
+
     """POST /tasks - tworzy zadanie, np. dla body {"title": "Kupic mleko"}.
 
     * tytuł ok     -> kod 201 i nowe zadanie, np. {"id": 1, "title": "Kupic mleko"}
@@ -81,8 +83,24 @@ def create_task(body, params):
     Hint: get_string(body, "title") zwraca tytuł albo "", jak go nie ma
     albo to nie jest string. Jak zmieniasz next_id, daj na początku funkcji: global next_id
     """
-    # TODO (Część 2)
-    return 501, {"error": "Not implemented"}
+    
+
+    title = get_string(body, "title") 
+    if title == "":
+        return 400, {"error": "Title there isn't in body, is not a str or is empty"}
+
+    if not is_valid_title(title):
+        return 400, {"error": "Title isn't valid title"}
+
+    #Zalozylem nadpisywanie id jesli ono istnielo w tasku, alternatywa to error
+    #i odpowedz ze id istneije w tasku, a nie powinno go byc 
+    #lub jakas proba pogodzenia obu id
+    body[id] = next_id
+    next_id += 1
+
+    tasks.append(body)
+    return 200, "add task"
+
 
 ROUTES = [
     ("GET", "/health", health),
