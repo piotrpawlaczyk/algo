@@ -33,8 +33,10 @@ def is_valid_title(title):
 
     Jak odpalisz serwer, to sam przetestuje tę funkcję i wypluje wynik w konsoli.
     """
-    # TODO (Część 1): na razie ta funkcja przepuszcza wszystko jak dziurawy firewall.
-    return True
+
+    title = title.strip()
+    return 0 < len(title) <=  MAX_TITLE_LENGTH
+
 
 
 # ============================================================================
