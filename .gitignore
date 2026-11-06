@@ -1,0 +1,10 @@
+__pycache__/
+*.class
+build/
+cmake-build-*/
+cpp/server
+*.exe
+*.o
+.idea/
+.vscode/
+.DS_Store
