@@ -45,7 +45,7 @@ def is_valid_title(title):
 
 tasks = []   # lista zadań; każde zadanie to słownik, np. {"id": 1, "title": "Kupic mleko"}
 next_id = 1  # id, które dostanie następne zadanie
-
+id = "id"
 
 # ============================================================================
 #  CZĘŚĆ 2: endpointy
@@ -67,8 +67,8 @@ def list_tasks(body, params):
     """GET /tasks - zwraca kod 200 i listę wszystkich zadań, np.
         [{"id": 1, "title": "Kupic mleko"}, {"id": 2, "title": "Nauczyc sie Gita"}]
     """
-    # TODO (Część 2)
-    return 501, {"error": "Not implemented"}
+    
+    return 200, tasks
 
 
 def create_task(body, params):
